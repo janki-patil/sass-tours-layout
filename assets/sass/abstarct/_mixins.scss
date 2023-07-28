@@ -1,0 +1,53 @@
+@mixin lg($direction, $colors...) {
+    background-image: linear-gradient($direction, $colors);
+}
+
+@mixin backgroundClip {
+    display: inline-block;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+@mixin atCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// 0 to 600px 
+//600px to 900px 
+// 900px to 1200px 
+
+//phone 
+//tabportrate
+//tabLandscape
+//bigScreen
+
+@mixin response($breakpoint) {
+
+    @if $breakpoint ==bigScreen {
+        @media(min-width:1200px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==tabLand {
+        @media(max-width:1200px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==tabport {
+        @media(max-width:900px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==phone {
+        @media(max-width:600px) {
+            @content;
+        }
+    }
+
+}
